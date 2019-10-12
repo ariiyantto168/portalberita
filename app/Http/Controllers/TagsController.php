@@ -17,14 +17,14 @@ class TagsController extends Controller
     public function index()
     {
         $contents = [
-            'tags' => Tags::all(),
+            'tag' => Tags::all(),
         ];
 
         $pagecontent = view('tags.index', $contents);
 
         // masterpage
         $pagemain = array(
-            'title' => 'Tags',
+            'title' => 'Tag',
             'menu' => 'master',
             'submenu' => 'tags',
             'pagecontent' => $pagecontent,
@@ -69,5 +69,25 @@ class TagsController extends Controller
         $saveTags->active = $active;
         $saveTags->save();
         return redirect('tags')->with('status_success','Created Tags');
+    }
+
+    public function update_page(Tags $tag)
+    {
+        $contents = [
+            'tag' => Tags::find($tag->idtags)
+        ];
+
+        // return $contents;
+        $pagecontent = view('tags.update');
+  
+      //masterpage
+      $pagemain = array(
+          'title' => 'tag',
+          'menu' => 'tags',
+          'submenu' => 'tags',
+          'pagecontent' => $pagecontent,
+      );
+  
+      return view('masterpage', $pagemain);
     }
 }

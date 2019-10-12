@@ -29,7 +29,7 @@
           </tr>
           </thead>
           <tbody>
-        @foreach($tags as $index => $tag)
+        @foreach($tag as $index => $tag)
           <tr>
             <td>{{$index+1}}</td>
             <td>{{$tag->tag_name}}</td>
@@ -45,7 +45,7 @@
             </td>
             <td>
               <center>
-                <a href="{{url('/tags/update/'.$tag->idusers)}}" ><i class="fa fa-pencil-square-o"></i></a>
+                <a href="{{url('/tags/update/'.$tag->idtags)}}" ><i class="fa fa-pencil-square-o"></i></a>
               </center>
             </td>
             

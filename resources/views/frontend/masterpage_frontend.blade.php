@@ -15,21 +15,7 @@
 
   <!-- Custom styles for this template -->
 <link href="{{asset('frontend/css/modern-business.css')}}" rel="stylesheet">
-<style media="screen">
-  .skin-blue .main-header .navbar {
-    background-color: #222d32 !important;
-  }
-  .skin-blue .main-header .logo {
-    background-color: #27345d !important;
-  }
-  .skin-blue .main-header .navbar .sidebar-toggle:hover {
-    background-color: #27345d !important;
-  }
-  .skin-blue .main-header .navbar {
-    background-color: #222d32 !important;
-  }
 
-  </style>
 
 </head>
 

@@ -21,7 +21,6 @@ class QuotesController extends Controller
     public function index()
     {
         $contents = [
-            
             'quotes' => Quotes::with(['tags'])->get(),
         ];
         // return $contents;
@@ -43,6 +42,7 @@ class QuotesController extends Controller
         $tags = Tags::all();
         $contents = [
             'tags' => $tags,
+            'quote' => Quotes::all(),
         ];
 
       $pagecontent = view('quotes.create', $contents);
@@ -88,10 +88,63 @@ class QuotesController extends Controller
         return redirect('quotes')->with('status_success','Created Quotes');
     }
 
+    public function update_page(Quotes $quote)
+    {
+        $tags = Tags::all();
+        $contents = [
+            'tags' => $tags,
+            'quote' => Quotes::find($quote->idquotes)
+        ];
+
+        // return $content;
+
+        $pagecontent = view('quotes.update',$contents);
+
+        // masterpage
+        $pagemain = array(
+            'title' => 'Quotes',
+            'menu' => 'quotes',
+            'submenu' => 'quotes',
+            'pagecontent' => $pagecontent
+        );
+        
+        return view('masterpage', $pagemain);
+    }
+
+    public function update_save(Request $request, Quotes $quote)
+    {
+        $request->validate([
+            'tittle' => 'required',
+            // 'slug' => 'required',
+            'subject' => 'required',
+            'status' => ''
+        ]);
+
+        //active
+        $active = FALSE;
+        if($request->has('active')) {
+            $active = TRUE;
+        }
+
+        $quotesSave = Quotes::find($quote->idquotes);
+        $quotesSave->tittle = $request->tittle;
+        $quotesSave->slug =  $slug = Str::slug($request->tittle, '-');
+        $quotesSave->subject = $request->subject;
+        $quotesSave->active = $active;
+        $quotesSave->save();
+
+        $quotesSave->tags()->attach($request->tag,[
+                                    'created_at' => date('Y-m-d H:i:s')
+                                    ]);
+
+        return redirect('quotes')->with('updated_success','Updated Quotes');
+    }
+
     public function show($slug)
     {
         // die('oke');
-        // $slud = Quotes::where('tittle',$slug)->first();
-        // return $slud;
+        $slud = Quotes::where('tittle',$slug)->first();
+        return $slud;
     }
+
 }
