@@ -47,6 +47,14 @@
                     </select>
                   </div>
                 </div>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Upload</label>
+                  <div class="col-sm-5">
+                  
+                  </div>
+                </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Status</label>
                     <div class="col-sm-10">
@@ -62,11 +70,19 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label"></label>
                   <div class="col-sm-10">
-                    <a href="{{url('tags')}}" class="btn btn-warning pull-right">Back</a>
+                    <a href="{{url('quotes')}}" class="btn btn-warning pull-right">Back</a>
                     <input type="submit" value="Save" class="btn btn-primary">
                   </div>
                 </div>
                 {{ Form::close() }}
+              </div>
+                          </div>
+                      </div>
+      
+      
+      
+                  </div>
+      
               </div>
               <!-- /.box-body -->
             </div>

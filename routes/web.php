@@ -34,5 +34,6 @@ Route::get('/quotes/create-new', 'QuotesController@create_page')->name('create')
 Route::post('/quotes/create-new', 'QuotesController@save_page')->name('create');
 Route::get('/quotes/update/{quote}', 'QuotesController@update_page')->name('edit');
 Route::post('/quotes/update/{quote}', 'QuotesController@update_save')->name('update');
+Route::delete('/quotes/delete/{quote}', 'QuotesController@delete')->name('delete');
 Route::get('/quotes/show/{slug}', 'QuotesController@show')->name('create');
-
+Route::post('quotes/change-images/{quote}', 'QuotesController@change_image')->name('images');

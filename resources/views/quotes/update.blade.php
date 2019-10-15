@@ -20,6 +20,7 @@
             <div class="box">
               <div class="box-header with-border">
                 <h3 class="box-title">Update</h3> 
+                <button type="button" class="btn btn-info btn-xs pull-right" data-toggle="modal" data-target="#myModal">Delete</button>
               </div>
               <div class="box-body">
                 {{Form::open(array('url' => 'quotes/update/'.$quote->idquotes, 'class' => 'form-horizontal'))}}
@@ -42,10 +43,11 @@
                   <div class="col-sm-5">
                     <select name="tag[]" class="form-control select2" multiple="multiple">
                       @foreach ($tags as $tag)
-                        <option value="{{$tag->idtags}}" @if ($tag->idtags == $quote->idtags)
+                        <option value="{{$tag->idtags}}" @if(in_array($tag->idtags,$data_tags))
                             selected
                         @endif>{{$tag->tag_name}}</option>
                       @endforeach
+                      
                     </select>
                   </div>
                 </div>
@@ -76,5 +78,28 @@
           
           </section>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete Quotes</h4>
+      </div>
+      <div class="modal-body">
+        <p>yakin ingin hapus Quotes??</p>
+      </div>
+      <div class="modal-footer">
+          {{Form::open(array('url' => 'quotes/delete/'.$quote->idquotes,'method'=>'delete','class' => 'form-horizontal'))}}
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <input type="submit" class="btn btn-danger" value="Yes">
+        {{Form::close()}}
+      </div>
+    </div>
+    
+  </div>
+</div>
 
 

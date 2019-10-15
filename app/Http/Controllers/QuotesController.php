@@ -91,12 +91,21 @@ class QuotesController extends Controller
     public function update_page(Quotes $quote)
     {
         $tags = Tags::all();
-        $contents = [
-            'tags' => $tags,
-            'quote' => Quotes::find($quote->idquotes)
-        ];
+        $quote = Quotes::with(['tags'])
+                ->where('idquotes',$quote->idquotes)
+                ->first();
 
-        // return $content;
+        $data_tags = [];
+        foreach($quote->tags as $tag){
+            $data_tags[] = $tag->idtags;
+        }
+        // return $tags;
+        
+        $contents = [
+            'data_tags' => $data_tags,
+            'tags' => $tags,
+            'quote' => $quote,
+        ];
 
         $pagecontent = view('quotes.update',$contents);
 
@@ -133,11 +142,26 @@ class QuotesController extends Controller
         $quotesSave->active = $active;
         $quotesSave->save();
 
-        $quotesSave->tags()->attach($request->tag,[
-                                    'created_at' => date('Y-m-d H:i:s')
-                                    ]);
+        $quotesSave->tags()->sync($request->tag);
 
         return redirect('quotes')->with('updated_success','Updated Quotes');
+    }
+
+    public function delete(Quotes $quote)
+    {
+
+        $deleteQuotes = Quotes::with(['tags'])
+                        ->where('idquotes',$quote->idquotes)
+                        ->first();
+        // return $deleteQuotes; 
+        $data_tag = [];                
+        foreach($deleteQuotes->tags as $tag){
+            $data_tag[] = $tag->idtags;
+        }
+
+        $deleteQuotes->tags()->detach($data_tag);
+        $deleteQuotes->delete();
+        return redirect('quotes')->with('status_success','Deleted Quotes');
     }
 
     public function show($slug)

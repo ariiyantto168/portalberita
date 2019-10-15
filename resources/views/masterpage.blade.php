@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.4.1/collection/icon/icon.css">
         <!-- jvectormap -->
 
+        {{-- dropzone --}}
+        <link rel="stylesheet" type="text/css" href="{{asset('adminlte/dropzone/assets/css/dropzone.css')}}">
+
         {{-- select2 --}}
         <link rel="stylesheet" type="text/css" href="{{asset('adminlte/bower_components/select2/dist/css/select2.min.css')}}">
         
@@ -233,6 +236,11 @@
 {{-- <script src="{{ asset('adminlte/bower_components/datatables.net-bs/js/datatables.bootstrap.js')}}"></script> --}}
 <script src="{{ asset('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
+{{-- dropzone --}}
+<script src="{{ asset('adminlte/dropzone/assets/js/dropzone.min.js') }}"></script>
+<script src="{{ asset('adminlte/dropzone/assets/js/scripts.js') }}"></script>
+
 <script>
   $('#menu_{{$menu}}').addClass('active');
   $('#submenu_{{$submenu}}').addClass('active');
@@ -254,6 +262,8 @@
  });
   
  $('.select2').select2();
+ $('.dropzone').dropzone();
+
 
 </script>
 </body>
