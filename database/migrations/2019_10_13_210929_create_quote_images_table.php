@@ -14,7 +14,7 @@ class CreateQuoteImagesTable extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
-            $table->increments('idiamges');
+            $table->increments('idimages');
             $table->integer('idquotes');
             $table->string('name');
             $table->timestamps();

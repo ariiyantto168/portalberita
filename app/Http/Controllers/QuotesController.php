@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Quotes;
 use App\Models\Tags;
+use App\Models\Images;
 use Illuminate\Support\Str;
 use Auth;
-
+use Image;
 
 class QuotesController extends Controller
 {
@@ -21,7 +22,7 @@ class QuotesController extends Controller
     public function index()
     {
         $contents = [
-            'quotes' => Quotes::with(['tags'])->get(),
+            'quotes' => Quotes::with(['tags','images'])->get(),
         ];
         // return $contents;
         $pagecontent = view('quotes.index', $contents);
@@ -81,6 +82,18 @@ class QuotesController extends Controller
         $quotesSave->active = $active;
         $quotesSave->save();
 
+        //save image 
+        $save_image = new Images;
+        $save_image->idquotes = $quotesSave->idquotes;
+        if ($request->hasFile('images')) {
+            $image = $request->file('images');
+            $re_image = Str::random(20).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(300, 300)->save( public_path('/images/' . $re_image) );
+            $save_image->name = $re_image;
+        }
+        $save_image->save();
+        
+        //save tags
         $quotesSave->tags()->attach($request->tag,[
                                     'created_at' => date('Y-m-d H:i:s')
                                     ]);
@@ -141,6 +154,8 @@ class QuotesController extends Controller
         $quotesSave->subject = $request->subject;
         $quotesSave->active = $active;
         $quotesSave->save();
+
+        // $save_image = Images
 
         $quotesSave->tags()->sync($request->tag);
 

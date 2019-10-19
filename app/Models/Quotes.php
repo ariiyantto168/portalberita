@@ -26,4 +26,9 @@ class Quotes extends Model
     {
         return $this->belongsToMany('App\Models\Tags','quote_tag','idquotes','idtags');
     }
+
+    public function images()
+    {
+        return $this->hasOne('App\Models\Images','idquotes');
+    }
 }

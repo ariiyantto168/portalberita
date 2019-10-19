@@ -23,6 +23,7 @@
             <th>No</th>
             <th>Tittle</th>
             <th>Slug</th>
+            <th>Images</th>
             <th>subject</th>
             <th>Tag</th>
             <th>status</th>
@@ -35,6 +36,13 @@
             <td>{{$index+1}}</td>
             <td>{{$quote->tittle}}</td>
             <td>{{$quote->slug}}</td>
+            <td>
+              @if (is_null($quote->images))
+                  <label>-<label>
+                @else 
+                  <img class="img-rounded-zoom" src="{{asset('images')}}/{{$quote->images}}"
+              @endif
+            </td>
             <td>{{$quote->subject}}</td>
             <td>
               @foreach ($quote->tags as $item)
