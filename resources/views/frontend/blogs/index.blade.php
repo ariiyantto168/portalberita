@@ -65,7 +65,7 @@
                     <ul class="list-unstyled mb-0">
                       <li>
                           @foreach ($tags as $tag)
-                            <a href="">{{$tag->tag_name}}</a>
+                            {{-- <a href="">{{$tag->tag_name}}</a> --}}
                           @endforeach
                       </li>
                     </ul>

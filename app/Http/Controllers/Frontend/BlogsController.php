@@ -33,6 +33,8 @@ class BlogsController extends Controller
         $slud = Quotes::where('tittle',$slug)->first();
         $contents = [
             'slud' => $slud,
+            'quotes' => Quotes::with(['tags','images'])->get(),
+            'tags' => Tags::all(),
         ];
         // return $contents;
         $pagecontent = view('frontend.blogs.show', $contents);
