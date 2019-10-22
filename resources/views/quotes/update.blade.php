@@ -51,6 +51,17 @@
                     </select>
                   </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Images<span class="required">*</span>
+                    </label>
+                    <div class="col-sm-5">
+                      <input type="file" id="images" name="images" class="form-control col-md-7 col-xs-12">
+                      {{-- <img class="img-rounded zoom" id="img-upload" width="50"> --}}
+                      <img class="img-rounded zoom" id="img-upload" src="{{asset('images')}}/{{$quote->images }}" width="50">
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Status</label>
                     <div class="col-sm-10">

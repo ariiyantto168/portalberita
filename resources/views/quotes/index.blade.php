@@ -37,12 +37,14 @@
             <td>{{$quote->tittle}}</td>
             <td>{{$quote->slug}}</td>
             <td>
-              @if (is_null($quote->images))
-                  <label>-<label>
-                @else 
-                  <img class="img-rounded-zoom" src="{{asset('images')}}/{{$quote->images}}"
-              @endif
-            </td>
+              {{-- images dapet dr model function --}}
+                @if (is_null($quote->images))
+                  <label> - </label>
+                @else
+                  <img class="img-rounded zoom" src="{{asset('images')}}/{{$quote->images->name }}" width="50">
+                @endif
+              </td>
+            <td>
             <td>{{$quote->subject}}</td>
             <td>
               @foreach ($quote->tags as $item)

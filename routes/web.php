@@ -37,3 +37,7 @@ Route::post('/quotes/update/{quote}', 'QuotesController@update_save')->name('upd
 Route::delete('/quotes/delete/{quote}', 'QuotesController@delete')->name('delete');
 Route::get('/quotes/show/{slug}', 'QuotesController@show')->name('create');
 Route::post('quotes/change-images/{quote}', 'QuotesController@change_image')->name('images');
+
+// blogs frontend
+Route::get('/blog', 'Frontend\BlogsController@index')->name('index');
+Route::get('/blog/{slug}', 'Frontend\BlogsController@show')->name('show');
