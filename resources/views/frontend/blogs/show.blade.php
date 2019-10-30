@@ -98,7 +98,7 @@
 
       <!-- Post Content Column -->
       <div class="col-lg-8">
-        {{Form::open(array('url' => 'blog/'.$quotes->idquotes, 'class' => 'form-horizontal'))}}  
+          
               
           
 
@@ -174,7 +174,6 @@
 
           </div>
         </div>
-        {{Form::close()}}
 
       </div>
 
@@ -196,17 +195,14 @@
 
       <!-- Categories Widget -->
       <div class="card my-4">
-        <h5 class="card-header">Tags</h5>
+        <h5 class="card-header">Categories</h5>
         <div class="card-body">
           <div class="row">
             <div class="col-lg-6">
 
               <ul class="list-unstyled mb-0">
                 <li>
-                    @foreach ($tags as $tag)
-                      {{-- <a href="">{{$tag->idtags->tag_name}}</a> --}}
-                <a href="{{url('/blog/{slug}'.$tag->idtags)}}">{{$tag->tag_name}}</a>
-                    @endforeach
+                    
                 </li>
               </ul>
             </div>

@@ -35,11 +35,9 @@ class BlogsController extends Controller
             'slud' => $slud,
             'quotes' => Quotes::with(['tags','images'])->get(),
             'tags' => Tags::all(),
-            // 'tags' => $tags,
         ];
         // return $contents;
         $pagecontent = view('frontend.blogs.show', $contents);
-
         $pagemain = array(
             'title' => 'Categories',
             // 'menu' => 'master',
@@ -48,6 +46,6 @@ class BlogsController extends Controller
         );
         
         return view('frontend.masterpage_frontend', $pagemain);
-        // return $slud;
     }
+
 }
