@@ -66,6 +66,7 @@
                       <li>
                           @foreach ($tags as $tag)
                             {{-- <a href="">{{$tag->tag_name}}</a> --}}
+                            <a href="{{url('/blog/{slug}'.$tag->idtags)}}">{{$tag->tag_name}}</a>
                           @endforeach
                       </li>
                     </ul>
