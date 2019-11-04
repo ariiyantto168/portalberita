@@ -40,4 +40,5 @@ Route::post('quotes/change-images/{quote}', 'QuotesController@change_image')->na
 
 // blogs frontend
 Route::get('/blog', 'Frontend\BlogsController@index')->name('index');
-Route::get('/blog/{slug}', 'Frontend\BlogsController@show')->name('show');
+Route::get('/blog/all/{tag_name}', 'Frontend\BlogsController@show')->name('show');
+Route::get('/blog/detail/{slug}', 'Frontend\BlogsController@detail')->name('detail');

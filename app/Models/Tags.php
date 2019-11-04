@@ -21,4 +21,9 @@ class Tags extends Model
     protected $casts = [
         'active' => 'boolean'
     ];
+
+    public function quotes()
+    {
+        return $this->belongsToMany('App\Models\Quotes','quote_tag','idtags','idquotes');
+    }
 }

@@ -15,7 +15,7 @@
                   <div class="card-body">
                   <h2 class="card-title">{{$quote->tittle}}</h2>
                   <p class="card-text">{{$quote->subject}}</p>
-                  <a href="{{url('blog/'. $quote->slug)}}" class="btn btn-primary">Read More &rarr;</a>
+                  <a href="{{url('blog/detail/'. $quote->slug)}}" class="btn btn-primary">Read More &rarr;</a>
                   </div>
                   <div class="card-footer text-muted">
                     Posted on January 1, 2017 by
@@ -65,8 +65,7 @@
                     <ul class="list-unstyled mb-0">
                       <li>
                           @foreach ($tags as $tag)
-                            {{-- <a href="">{{$tag->tag_name}}</a> --}}
-                            <a href="{{url('/blog/{slug}'.$tag->idtags)}}">{{$tag->tag_name}}</a>
+                            <a href="{{url('/blog/all/'.$tag->tag_name)}}">{{$tag->tag_name}}</a>
                           @endforeach
                       </li>
                     </ul>

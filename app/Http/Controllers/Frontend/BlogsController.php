@@ -28,13 +28,23 @@ class BlogsController extends Controller
         return view('frontend.masterpage_frontend', $pagemain);
     }
 
-    public function show(Quotes $quote , $slug)
+
+    public function show($tag_name)
     {
-        $slud = Quotes::where('tittle',$slug)->first();
+        // return $tag_name;
+        // return $tag_name;
+        $tags = Tags::with([
+                        'quotes' => function($image){
+                            $image->with('images');
+                        }
+                    ])
+                    ->where('tag_name',$tag_name)
+                    ->get();
+        // return $tags;
         $contents = [
-            'slud' => $slud,
-            'quotes' => Quotes::with(['tags','images'])->get(),
-            'tags' => Tags::all(),
+            'tags' => $tags,
+            // 'quotes' => Quotes::with(['tags','images'])->get(),
+            // 'tags' => Tags::all(),
         ];
         // return $contents;
         $pagecontent = view('frontend.blogs.show', $contents);
@@ -45,6 +55,24 @@ class BlogsController extends Controller
             'pagecontent' => $pagecontent
         );
         
+        return view('frontend.masterpage_frontend', $pagemain);
+    }
+
+    public function detail($slug)
+    {
+        // return $slug;
+         $detail = Quotes::with(['tags','images'])->where('slug',$slug)->first();
+        //  return $detail;
+        $contents = [
+            'detail' => $detail,
+        ];
+
+        $pagecontent = view('frontend.blogs.detail', $contents);
+        $pagemain = array(
+            'title' => 'Detail',
+            'pagecontent' => $pagecontent
+        );
+
         return view('frontend.masterpage_frontend', $pagemain);
     }
 

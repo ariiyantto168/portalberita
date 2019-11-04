@@ -100,9 +100,8 @@
       <div class="col-lg-8">
           
         <!-- Preview Image -->
-        @foreach ($tags as $tag)
-          @foreach ($tag->quotes as $quote)
-            <img class="img-fluid rounded" src="@if(!is_null($quote->images)){{asset('images')}}/{{$quote->images->name }}@endif" alt="">
+
+            <img class="img-fluid rounded" src="@if(!is_null($detail->images)){{asset('images')}}/{{$detail->images->name }}@endif" alt="">
         <hr>
         <!-- Date/Time -->
         <p>Posted on January 1, 2017 at 12:00 PM</p>
@@ -110,18 +109,14 @@
         <!-- Post Content -->
         <blockquote class="blockquote">
         
-        <cite title="Source Title">{{$quote->tittle}}</cite>
-        <p class="mb-0">{{$quote->subject}}</p>
-          <footer class="blockquote-footer">{{$quote->slug}}
+        <cite title="Source Title">{{$detail->tittle}}</cite>
+        <p class="mb-0">{{$detail->subject}}</p>
+          <footer class="blockquote-footer">{{$detail->slug}}
           </footer>
-          <a href="{{url('blog/detail/'. $quote->slug)}}" class="btn btn-primary">Read More &rarr;</a>
         </blockquote>
 
 
         <hr>
-        @endforeach
-
-        @endforeach
         <!-- Comments Form -->
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>

@@ -25,9 +25,10 @@
             <th>Slug</th>
             <th>Images</th>
             <th>subject</th>
-            <th>Tag</th>
+            <th>tags</th>
             <th>status</th>
             <th></th>
+      
           </tr>
           </thead>
           <tbody>
@@ -44,7 +45,6 @@
                   <img class="img-rounded zoom" src="{{asset('images')}}/{{$quote->images->name }}" width="50">
                 @endif
               </td>
-            <td>
             <td>{{$quote->subject}}</td>
             <td>
               @foreach ($quote->tags as $item)
