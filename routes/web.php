@@ -42,3 +42,6 @@ Route::post('quotes/change-images/{quote}', 'QuotesController@change_image')->na
 Route::get('/blog', 'Frontend\BlogsController@index')->name('index');
 Route::get('/blog/all/{tag_name}', 'Frontend\BlogsController@show')->name('show');
 Route::get('/blog/detail/{slug}', 'Frontend\BlogsController@detail')->name('detail');
+
+// comments frontend
+Route::post('/blog/detail/{slug}', 'Frontend\CommentController@save_comments')->name('comments');

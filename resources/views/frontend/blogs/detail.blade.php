@@ -117,16 +117,33 @@
 
 
         <hr>
+
+        @if(session('error_comments'))
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-ban"></i> Error!</h4>
+          {{session('error_comments')}}
+        </div> 
+        @elseif(session('succes_comment'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-ban"></i> Succes cuk</h4>
+            {{session('succes_comment')}}
+          </div>        
+        @endif
+
         <!-- Comments Form -->
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form>
+            
+            {{ Form::open(array('url' => 'blog/detail/'.$detail->slug, 'class' => 'form-horizontal','files' => 'true')) }}
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" name="subject"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+              {{Form::close()}}
+            
           </div>
         </div>
 
@@ -140,30 +157,6 @@
         </div>
 
         <!-- Comment with nested comments -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-          </div>
-        </div>
 
       </div>
 
