@@ -13,4 +13,10 @@ class Comments extends Model
     protected $fillable = [
         'subject'
     ];
+
+    
+    public function FunctionName(Type $var = null)
+    {
+        # code...
+    }
 }

@@ -31,4 +31,9 @@ class Quotes extends Model
     {
         return $this->hasOne('App\Models\Images','idquotes');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comments','idquotes');
+    }
 }

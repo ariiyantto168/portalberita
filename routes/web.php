@@ -45,3 +45,4 @@ Route::get('/blog/detail/{slug}', 'Frontend\BlogsController@detail')->name('deta
 
 // comments frontend
 Route::post('/blog/detail/{slug}', 'Frontend\CommentController@save_comments')->name('comments');
+Route::get('/blog/detail/{slug}', 'Frontend\CommentController@show_comments')->name('comments');
