@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Models\Quotes;
 use App\Models\Comments;
+use App\Models\User;
 
 class CommentController extends Controller
 {
@@ -30,10 +31,8 @@ class CommentController extends Controller
     {
         $detail = Quotes::with(['tags','images'])->where('slug',$slug)->first();
         $quotes_comment = Quotes::with([
-                            'comments' => function($com){
-                                $com->with('');
-                        }   
-        ])->get();
+                            'comments'    
+                        ])->get();
 
         // return $quotes_comment;
         $contents = [

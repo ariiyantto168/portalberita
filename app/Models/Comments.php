@@ -15,8 +15,8 @@ class Comments extends Model
     ];
 
     
-    public function FunctionName(Type $var = null)
+    public function users()
     {
-        # code...
+    	return $this->belongsTo('App\Models\User', 'idusers');
     }
 }
