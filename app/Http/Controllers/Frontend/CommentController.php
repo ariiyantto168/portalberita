@@ -29,9 +29,11 @@ class CommentController extends Controller
 
     public function show_comments($slug)
     {
-        $detail = Quotes::with(['tags','images'])->where('slug',$slug)->first();
+        $detail = Quotes::with(['tags','images','users'])->where('slug',$slug)->first();
         $quotes_comment = Quotes::with([
-                            'comments'    
+                            'comments' => function($user){
+                                $user->with('users');
+                            }
                         ])->get();
 
         // return $quotes_comment;

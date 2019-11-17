@@ -36,4 +36,9 @@ class Quotes extends Model
     {
         return $this->hasMany('App\Models\Comments','idquotes');
     }
+
+    public function users()
+    {
+    	return $this->belongsTo('App\Models\User', 'idusers');
+    }
 }
